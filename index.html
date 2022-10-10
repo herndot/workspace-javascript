@@ -8,7 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-
 </head>
 
 <body>
@@ -17,7 +16,7 @@
             
         </div>
 
-        <div class="practice">
+       <div class="practice">
             <h1>Hello world in JavaScript
             </h1>
             <p>
@@ -57,7 +56,8 @@
 
         </div>
 
-        <div class="practice">
+        <!-- This for some reason prevents everything after it from showing but this itself works
+            <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
             <p> Write an image to the page </p>
             <script>
@@ -84,13 +84,14 @@
                 document.write(tablecode);
             </script>
 
-        </div>
+        </div>-->
 
         <div class="practice">
             <h1>Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-
+                document.write(window.location.href);
+                document.write(document.lastModified);
             </script>
 
         </div>
@@ -106,11 +107,19 @@
 
         <div class="practice">
             <h1> Get innerHTML of an elemnt</h1>
-            <p id="p1"> Paragraph Number One </p>
-            <p id="p2"> Paragraph Number two </p>
+            <p id="p1" onclick="changeit();"> Paragraph Number One </p>
+            <p id="p2" onmouseover=" " onmouseout=" "> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
+            <p><input type="text" id="myname"></p>
             <p>Please write JavaScript code to change the content of each paragraph.​
             <p>
+                <script>
+                    //event handler
+                    function changeit() {
+                        document.getElementById('p1').textContent="I did it";
+                        document.getElementById('myname').value = "I knew it";
+                    }
+                </script>
 
 
         </div>
@@ -120,7 +129,11 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
+                    var n1 = parseInt(document.getElementsByName('num1')[0].value);
+                    var n2 = parseInt(document.getElementsByName('num2')[0].value);
+                    console.log("n1="+n1);
+                    var ans = n1 + n2;
+                    document.getElementById('result').textContent = "The answer is "+ ans;
 
                 }
             </script>
@@ -150,6 +163,16 @@
                     </label>
                 </p>
             </form>
+            
+            <script>
+                //event handler
+                function welcomeMSG() {
+                    window.alert("works");
+                }
+                //event, add event handler
+                var fE = document.getElementById('cName'); //input text box
+                fE.addEventListener('blur', welcomeMSG, false);
+            </script>
 
         </div>
 
@@ -256,13 +279,13 @@
 
         <div class="practice">
             <h1>For Loop Practice 2 </h1>
-            <!--  Input number box -->
+            <!-- Input number box -->
             <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
             <p>
                 <input type="button" value="Click for multiplication table">
             </p>
 
-            <!-- output section -->
+            <!--- output section -->
             <div id="output">
 
 
