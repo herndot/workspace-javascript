@@ -17,7 +17,7 @@
         </div>
 
        <div class="practice">
-            <h1>Hello world in JavaScript
+            <h1>I: Hello world in JavaScript
             </h1>
             <p>
                 Please display a hello world message in JavaScript. 
@@ -36,7 +36,7 @@
         </div>
 
         <div class="practice">
-            <h1> Variable and Arithemetic Operation</h1>
+            <h1> II: Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
             <script>
                 var num0 = 2;
@@ -56,9 +56,8 @@
 
         </div>
 
-        <!-- This for some reason prevents everything after it from showing but this itself works
-            <div class="practice">
-            <h1> JavaScript Escape Sequence</h1>
+        <div class="practice">
+            <h1> III: JavaScript Escape Sequence</h1>
             <p> Write an image to the page </p>
             <script>
                 document.write("<img src=\"img/die1.png\" alt=\"dies\">");
@@ -81,13 +80,14 @@
                     for(var j=1; j<7; j++) tablecode+="<td>"+j+"</td>";
                     tablecode += "</tr>";
                 }
+                tablecode+= "</table>";
                 document.write(tablecode);
             </script>
 
-        </div>-->
+        </div>
 
         <div class="practice">
-            <h1>Window and document object </h1>
+            <h1> IV: Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
                 document.write(window.location.href);
@@ -97,7 +97,7 @@
         </div>
 
         <div class="practice">
-            <h1> Get textcontent of an element </h1>
+            <h1> V: Get textcontent of an element </h1>
             <p>Perform arithmetic operation on <span id="num1"> 4 </span> and <span id="num2">5 </span> </p>
             <p>Result:
                 <script src="js/arith.js"></script>
@@ -106,7 +106,7 @@
         </div>
 
         <div class="practice">
-            <h1> Get innerHTML of an elemnt</h1>
+            <h1> VI: Get innerHTML of an elemnt</h1>
             <p id="p1" onclick="changeit();"> Paragraph Number One </p>
             <p id="p2" onmouseover=" " onmouseout=" "> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
@@ -125,12 +125,13 @@
         </div>
 
         <div class="practice">
-            <h1> Get input from a form </h1>
+            <h1> VII: Get input from a form </h1>
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
                     var n1 = parseInt(document.getElementsByName('num1')[0].value);
                     var n2 = parseInt(document.getElementsByName('num2')[0].value);
+                    if(isNaN(parseFloat(n1))||isNaN(parseFloat(n2))) window.alert("Enter a number!");
                     console.log("n1="+n1);
                     var ans = n1 + n2;
                     document.getElementById('result').textContent = "The answer is "+ ans;
@@ -145,7 +146,7 @@
         </div>
 
         <div class="practice">
-            <h1>JavaScript Events - blur -addEventListener </h1>
+            <h1> VIII: JavaScript Events - blur -addEventListener </h1>
             <form>
                 <p>
                     <label> Name:
@@ -167,7 +168,8 @@
             <script>
                 //event handler
                 function welcomeMSG() {
-                    window.alert("works");
+                    var name = document.getElementById('cName').value;
+                    document.getElementById('message').innerHTML = "Welcome <b>" + name + "</b>";
                 }
                 //event, add event handler
                 var fE = document.getElementById('cName'); //input text box
@@ -177,31 +179,52 @@
         </div>
 
         <div class="practice">
-            <h1> Practice - Calculate Square</h1>
+            <h1> IX: Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <label id="results"> ? </label>
+            <script>
+
+                function sqr() {
+                    document.getElementById('results').textContent = numBox.value*numBox.value;
+                }
+
+                var numBox = document.getElementById('num'); //input text box
+                numBox.addEventListener('blur', sqr, false);
+
+            </script>
 
         </div>
 
         <div class="practice">
-            <h1> Difference between textcontent and innerHTML</h1>
+            <h1> X: Difference between textcontent and innerHTML</h1>
             <p> HTML Try it Editor </p>
             <p>ENTER your code </p>
-            <textarea cols="40" rows="20" id="code">  
+            <textarea cols="40" rows="20" id="codeX">  
 
             </textarea>
 
-            <input type="button" id="tryit" value="Click and Display"> 
+            <input type="button" id="tryitX" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="msgX"> 
             </div>
 
+            <script>
+
+                function toHTML() {
+                    var codeX = document.getElementById('codeX').value;
+                    document.getElementById('msgX').innerHTML = codeX;
+                }
+
+                var buttonX = document.getElementById('tryitX');
+                buttonX.addEventListener('click', toHTML, false);
+
+            </script>
 
         </div>
 
         <div class="practice">
-            <h1>Decision statement - If </h1>
+            <h1> XI: Decision statement - If </h1>
             Honda Accord Used Car price estimate,
             <p>Please enter the year of the car
                 <select id="year">
@@ -227,7 +250,7 @@
         </div>
 
         <div class="practice">
-            <h1> Decision Statement - Switch</h1>
+            <h1> XII: Decision Statement - Switch</h1>
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
@@ -237,7 +260,7 @@
 
 
         <div class="practice">
-            <h1> Switch practice -- Insurance Application</h1>
+            <h1> XIII: Switch practice -- Insurance Application</h1>
             <p> Choose your coverage
                 <input type="radio" name="coverage" value="100000">100000
                 <input type="radio" name="coverage" value="200000">200000
@@ -267,7 +290,7 @@
 
 
         <div class="practice">
-            <h1>For Loop Practice 1 </h1>
+            <h1> XIV: For Loop Practice 1 </h1>
             <p> Display the square of numer 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
             <p>
@@ -278,7 +301,7 @@
 
 
         <div class="practice">
-            <h1>For Loop Practice 2 </h1>
+            <h1> XV: For Loop Practice 2 </h1>
             <!-- Input number box -->
             <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
             <p>
@@ -295,7 +318,7 @@
 
 
         <div class="practice">
-            <h1>For loop practice 3 -Math Drill </h1>
+            <h1> XVI: For loop practice 3 -Math Drill </h1>
             <p> N = <input type="number" min="1" max="10" id="inputnumber3"> </p>
 
             <p>
@@ -306,14 +329,14 @@
         </div>
 
         <div class="practice">
-            <h1> A simple JavaScript Quiz</h1>
+            <h1> XVII: A simple JavaScript Quiz</h1>
             <p> A simple JavaScript Quiz </p>
             <p>Target: Generate a simple substract and add problems using JavaScript and then check the answers</p>
             <a href="quiz1.html">Do your practice in quiz1.html</a>
         </div>
 
         <div class="practice">
-            <h1>Change Attribute -- Rolling a dice </h1>
+            <h1> XVIII: Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
             <p> <img src="img/die1.png"> </p>
             <table>
