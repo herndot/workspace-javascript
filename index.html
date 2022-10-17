@@ -227,23 +227,49 @@
             <h1> XI: Decision statement - If </h1>
             Honda Accord Used Car price estimate,
             <p>Please enter the year of the car
-                <select id="year">
+                <select id="yearXI">
                     <option> 2003</option>
                     <option> 2004</option>
                 </select>.</p>
             <p>Please enter the condition of the car
-                <select id="condition">
+                <select id="conditionXI">
                     <option> Fair</option>
                     <option> Good</option>
                 </select>.</p>
 
-            <p id="price">
+            <p id="priceXI">
 
             </p>
 
             <script type="text/javascript">
 
+                function getPrice() {
+                    var year = document.getElementById('yearXI').value;
+                    var condition = document.getElementById('conditionXI').value;
+                    var price = 0;
 
+                    switch(year+condition) {
+                        case "2003Fair": price = 4500; break;
+                        case "2003Good": price = 5000; break;
+                        case "2004Fair": price = 4700; break;
+                        case "2004Good": price = 5500; break;
+                    }
+
+                    /*if(year == '2003') {
+                        if(condition == 'Fair') {price = 4500;}
+                        else {price = 5000;}
+                    }
+                    else {
+                        if(condition == 'Fair') {price = 4700;}
+                        else {price = 5500;}
+                    }*/
+                    
+                    document.getElementById('priceXI').textContent = price.toString();
+
+                }
+
+                document.getElementById('yearXI').addEventListener('change', getPrice, false);
+                document.getElementById('conditionXI').addEventListener('change', getPrice, false);
 
             </script>
 
@@ -251,9 +277,37 @@
 
         <div class="practice">
             <h1> XII: Decision Statement - Switch</h1>
-            <p> Choose your favorite theme(warm, cool, hot)
-                <input type="text" id="theme">
+            <p> Choose your favorite theme(warm, cool, hot, cold, lukewarm)
+                <input type="text" id="themeXII">
             </p>
+
+            <script>
+
+                function setTheme() {
+
+                    let theme = document.getElementById('themeXII').value;
+                    let bColor = "black";
+
+                    switch(theme) {
+                        case "warm": bColor = "orange"; break;
+                        case "cool": bColor = "lightblue"; break;
+                        case "hot": bColor = "red"; break;
+                        case "cold": bColor = "blue"; break;
+                        case "lukewarm": bColor = "tan"; break;
+                        default: bColor = "white"; break;
+                    }
+
+                    //old way
+                    //document.body.style.backgroundColor = bColor;
+
+                    //new way
+                    document.body.setAttribute('style', 'background-color:'+bColor);
+
+                }
+
+                document.getElementById('themeXII').addEventListener('blur', setTheme, false);
+
+            </script>
 
         </div>
 
@@ -280,9 +334,24 @@
             <p>
                 <input type="button" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="resultXIII">
 
             </p>
+
+            <script>
+
+                function getPremium() {
+
+                    var radio = document.querySelector('input[name="coverage"]:checked');
+                    var coverage = pareInt(radio.value);
+
+                    console.log(coverage);
+
+                }
+
+                document.querySelector('input[value="Check Premium"]').addEventListener('click', getPremium, false);
+
+            </script>
 
         </div>
 
@@ -364,7 +433,7 @@
 
 
         <div class="practice">
-            <h1> Array example - Image banner</h1>
+            <h1> XIX: Array example - Image banner</h1>
             <div class="img-container-hide">
                 <img src="img/usca1.jpg" alt="usca" />
             </div>
@@ -389,7 +458,7 @@
 
 
         <div class="practice">
-            <h1>JavaScript Object </h1>
+            <h1> XX: JavaScript Object </h1>
             <p> Hotel registration </p>
             <div>
                 <form>
@@ -426,7 +495,7 @@
 
 
         <div class="practice">
-            <h1>Continue other practices</h1>
+            <h1> XXI: Continue other practices</h1>
             <a href="JSON.html">JSON Practice</a>
             <a href="element.html"> Element Practice </a>
         </div>
