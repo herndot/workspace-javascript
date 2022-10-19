@@ -322,7 +322,7 @@
 
             </p>
             <p> Choose your age group.
-                <select id="agegroup">
+                <select id="agegroupXIII">
                     <option> under 30 </option>
                     <option> 30-34 </option>
                     <option> 35-39</option>
@@ -343,13 +343,35 @@
                 function getPremium() {
 
                     var radio = document.querySelector('input[name="coverage"]:checked');
-                    var coverage = pareInt(radio.value);
+                    if(radio != null)
+                        {var coverage = parseInt(radio.value);}
+                        else return;
+                    var index = document.getElementById('agegroupXIII').selectedIndex;
+                    var base = 10;
+                    var ageFactor= 0;
 
-                    console.log(coverage);
+                    switch(index) {
+                        case 0: ageFactor=0.08; break;
+                        case 1: ageFactor=0.09; break;
+                        case 2: ageFactor=0.11; break;
+                        case 3: ageFactor=0.17; break;
+                        default: break;
+                    }
+
+                    var premium = parseInt(base+ageFactor*coverage/1000);
+
+                    var result = document.getElementById("resultXIII");
+                    result.textContent = premium;
+
+                    if(index == 0) {result.animate([{transform:'scale(0.0)'},{transform:'scale(1.0)'}],{duration:2000, fill:"forwards"});}
+                    else {result.animate([{transform:'translate(200px,0)'},{transform:'translate(0,0)'}],{duration:2000, fill:"forwards"});}
+
+                    
 
                 }
 
-                document.querySelector('input[value="Check Premium"]').addEventListener('click', getPremium, false);
+                var button = document.querySelector('input[value="Check Premium"]');
+                button.addEventListener('click', getPremium, false);
 
             </script>
 
@@ -365,6 +387,27 @@
             <p>
                 <input type="button" value="Click for Square">
             </p>
+            <p id="resultXIV">
+            </p>
+
+            <script>
+
+                function loop1() {
+                    var input = document.getElementById("inputnumber1")
+                    if(input != null)
+                        {var N = parseInt(input.value);}
+                        else return;
+                    var squares = 1;
+
+                    for(var i = 2; i <= N; i++) {squares += i;}
+
+                    document.getElementById("resultXIV").textContent = "" + (squares*squares);
+
+                }
+
+                document.querySelector('input[value="Click for Square"]').addEventListener('click', loop1, false);
+
+            </script>
 
         </div>
 
