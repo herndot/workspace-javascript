@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main-old.css">
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -450,7 +450,7 @@
         <div class="practice">
             <h1> XVIII: Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img src="img/die1.png" id="die"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -470,7 +470,38 @@
                     <td id="r5"></td>
                     <td id="r6"></td>
                 </tr>
+                <tr>
+                    <th>Percent</th>
+                    <td id="p1"></td>
+                    <td id="p2"></td>
+                    <td id="p3"></td>
+                    <td id="p4"></td>
+                    <td id="p5"></td>
+                    <td id="p6"></td>
+                </tr>
             </table>
+
+            <script>
+                var stats = [0, 0, 0, 0, 0, 0];
+                var sum = 0;
+                function changeImage() {
+                    sum++;
+                    var num = Math.floor(Math.random()*6+1);
+                    stats[num-1]++;
+                    console.log(stats);
+                    document.getElementById('die').setAttribute('src', "img/die"+num+".png");
+
+                    for(var i=0; i < stats.length; i++) {
+                        console.log(stats[i]);
+                        document.getElementById("r" + (i+1)).textContent = stats[i].toString();
+                        document.getElementById("p" + (i+1)).textContent = (stats[i]/sum*100).parseInt().toString();
+                    }
+
+                }
+
+                var button = document.getElementById("roll");
+                button.addEventListener('click', changeImage, false);
+            </script>
 
         </div>
 
@@ -492,8 +523,23 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
+
 			<script>
-				
+
+                //Event Handler
+                function changePic() {
+
+                    imgList[index].setAttribute("class", "img-container-hide");
+                    index = (index+1)%imgList.length;
+                    imgList[index].setAttribute("class", "img-container");
+
+                }
+
+				//Automated Event
+                //setInterval(changePic, 5000);
+                var index = 0;
+                var imgList = document.querySelectorAll(".img-container-hide");
+
 			</script>
 
 
@@ -546,8 +592,8 @@
 
 
     </div>
-    <script src="script.js"> </script>
-    <script src="js/practice.js"></script>
+    <!--<script src="script.js"> </script>
+    <script src="js/practice.js"></script><!---->
 
 
 </body>
