@@ -7,7 +7,13 @@
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
 
+            $('body').hide().fadeIn(3000);
+
+        });
+    </script>
 </head>
 
 <body>
@@ -472,12 +478,12 @@
                 </tr>
                 <tr>
                     <th>Percent</th>
-                    <td id="p1"></td>
-                    <td id="p2"></td>
-                    <td id="p3"></td>
-                    <td id="p4"></td>
-                    <td id="p5"></td>
-                    <td id="p6"></td>
+                    <td id="p1XVIII"></td>
+                    <td id="p2XVIII"></td>
+                    <td id="p3XVIII"></td>
+                    <td id="p4XVIII"></td>
+                    <td id="p5XVIII"></td>
+                    <td id="p6XVIII"></td>
                 </tr>
             </table>
 
@@ -494,8 +500,8 @@
                     for(var i=0; i < stats.length; i++) {
                         console.log(stats[i]);
                         document.getElementById("r" + (i+1)).textContent = stats[i].toString();
-                        document.getElementById("p" + (i+1)).textContent = (stats[i]/sum*100).parseInt().toString();
-                    }
+                        document.getElementById("p" + (i+1) + "XVIII").textContent = (stats[i]/sum*100).toString();
+                    }//*/
 
                 }
 
@@ -592,6 +598,29 @@
 
 
     </div>
+    <script>
+        var click = 0;
+        $('h1').click(function() {
+            click++;
+            var clickMsg = "";
+            for(var i = 0; i < click; i++) clickMsg += '\n"click."';
+            window.alert(clickMsg);
+        });
+        /*$('h1').mouseover(function() {
+            $(this).fadeOut(3000);
+        });*/
+        $('h1').click(function() {
+            $(this).hide();
+        });
+        $('input').each(function() {
+            var ID = $(this).attr('id');
+            console.log(ID);
+        });
+        $('img').each(function() {
+            var SRC = $(this).attr('src');
+            console.log(SRC);
+        });
+    </script>
     <!--<script src="script.js"> </script>
     <script src="js/practice.js"></script><!---->
 
